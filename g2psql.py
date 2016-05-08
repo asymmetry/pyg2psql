@@ -138,7 +138,7 @@ def get_my_bleedthrough(run):
 def get_my_onetrackeff(run):
     return _search('OneTrackEff', run)
 
-def get_my_alltracakeff(run):
+def get_my_alltrackeff(run):
     return _search('AllTrackEff', run)
 
 def get_my_alltrackeffl(run):
