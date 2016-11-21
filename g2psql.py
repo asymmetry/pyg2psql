@@ -14,7 +14,11 @@ def _search(field, run):
         table = 'AnaInfoL'
 
     cur.execute('Select {} from {} where RunNumber = {}'.format(field, table, run)) # danger!!!
-    result, = cur.fetchone()
+    r = cur.fetchone()
+    if r == None:
+        result = None
+    else:
+        result = r[0]
 
     if isinstance(result, unicode):
         if result == None:
