@@ -1,14 +1,16 @@
 #!/usr/bin/env python
 
-import time, datetime, sqlite3
+import datetime
 from os.path import join, dirname, realpath
+import sqlite3
+import time
 
 _con = sqlite3.connect(join(dirname(realpath(__file__)), 'g2p.db'))
 _cur = _con.cursor()
 
 def _search(field, run):
     table = 'AnaInfoR' if run > 20000 else 'AnaInfoL'
-    _cur.execute('Select {} from {} where RunNumber = {}'.format(field, table, run)) # danger!!!
+    _cur.execute('Select {} from {} where RunNumber = {}'.format(field, table, run))    # danger!!!
     r = _cur.fetchone()
 
     result = None
@@ -259,3 +261,6 @@ def get_my_ySRCut(run):
 
 def get_my_rSRCut(run):
     return _float_result('rSR', run)
+
+if __name__ == '__main__':
+    print(get_my_beam_energy(5585))
